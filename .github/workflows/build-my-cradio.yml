@@ -1,0 +1,19 @@
+# Copyright 2024 Manna Harbour
+# https://github.com/manna-harbour/miryoku
+
+name: 'Build My Cradio'
+on: workflow_dispatch
+jobs:
+  build:
+    uses: ./.github/workflows/main.yml
+    secrets: inherit
+    with:
+      board: '["nrfmicro_13"]'
+      shield: '["cradio_left", "cradio_right"]'
+      alphas: '["QWERTY"]'
+      extra: '["ColemakDHK"]'
+      nav: '["invertedT"]'
+      layers: '["flip"]'
+      custom_config: '["#define MIRYOKU_KLUDGE_MOUSEKEYSPR"]'
+      kconfig: '["CONFIG_ZMK_MOUSE=y"]'
+      branches: '["caksoylar/zmk/feat/mouse-keys-3.2"]'
